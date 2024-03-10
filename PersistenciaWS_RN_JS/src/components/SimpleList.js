@@ -70,7 +70,7 @@ export const SimpleList = React.forwardRef((props, ref) => {
 
                   </Pressable>
               )}
-              </ScrollView> 
+              </ScrollView>
           </View>
   
 });

@@ -14,14 +14,6 @@ import 'intl/locale-data/jsonp/pt-BR'
 
 export default function HomeScreen(props) {
 
-  /*const proximaTela = () => {
-    navigation.navigate('Profile', { name: 'Pedro' });
-  }
-  return <View>
-          <Text>Home</Text>
-          <Button onPress={() => proximaTela() } title="Proxima"></Button>
-        </View>*/
-
     const listRef = React.useRef(null);
     const navigation = useNavigation(props);
   

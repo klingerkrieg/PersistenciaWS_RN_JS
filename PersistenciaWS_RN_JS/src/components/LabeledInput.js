@@ -5,9 +5,9 @@ import { Text, View, StyleSheet, Pressable} from 'react-native';
 
 //tem esse checkbox especifico pro expo
 import Checkbox from 'expo-checkbox';
-import { TextInput } from 'react-native-gesture-handler';
+import { GestureHandlerRootView, TextInput } from 'react-native-gesture-handler';
 import CurrencyInput from 'react-native-currency-input'
-import { Masks, useMaskedInputProps } from 'react-native-mask-input';
+import MaskInput, {Masks} from 'react-native-mask-input';
 
 export const buttonTypes = {
     success:'#38c23c',
@@ -60,36 +60,24 @@ export function LabeledInput(props){
 
     let input;
     if (type == 'checkbox'){
-        input = <CheckBox value={props.value}
+        input = <Checkbox value={props.value}
                     onValueChange={props.onValueChange}
                     style={styles.checkbox} />
     } else
     if (type == 'phone'){
-        const maskedInputProps = useMaskedInputProps({
-            value:props.value,
-            mask: Masks.BRL_PHONE,
-        });
-        input = <TextInput style={styles.input} {...maskedInputProps}
+        input = <TextInput style={styles.input} mask={Masks.BRL_PHONE} value={props.value}
                         onChangeText={text => props.onChangeText(text)}
                         inputMode="numeric"
                         readOnly={readOnly} />
     } else
     if (type == 'cpf'){
-        const maskedInputProps = useMaskedInputProps({
-            value:props.value,
-            mask: Masks.BRL_CPF,
-        });
-        input = <TextInput style={styles.input} {...maskedInputProps}
+        input = <MaskInput style={styles.input} mask={Masks.BRL_CPF} value={props.value}
                             onChangeText={text => props.onChangeText(text)}
                             inputMode="numeric"
                             readOnly={readOnly} />
     } else
     if (type == 'cep'){
-        const maskedInputProps = useMaskedInputProps({
-            value:props.value,
-            mask: Masks.ZIP_CODE,
-        });
-        input = <TextInput style={styles.input} {...maskedInputProps}
+        input = <TextInput style={styles.input} mask={Masks.ZIP_CODE} value={props.value}
                             onChangeText={text => props.onChangeText(text)}
                             inputMode="numeric"
                             readOnly={readOnly} />
@@ -102,7 +90,7 @@ export function LabeledInput(props){
     } else
     if (type == 'email'){
         input = <TextInput value={props.value} style={styles.input} 
-                        inputMode="email-address"
+                        inputMode="email"
                         onChangeText={text => props.onChangeText(text)}
                         readOnly={readOnly} />
     } else
@@ -161,7 +149,7 @@ export function LabeledInput(props){
             </View>);
     } else {
         return (
-            <View style={styles.container}>
+            <GestureHandlerRootView style={styles.container}>
 
                 <Text style={styles.label}>
                     {props.label}
@@ -179,6 +167,6 @@ export function LabeledInput(props){
                     {props.error}
                 </Text>
                 }      
-            </View>);
+            </GestureHandlerRootView>);
     }
 };
