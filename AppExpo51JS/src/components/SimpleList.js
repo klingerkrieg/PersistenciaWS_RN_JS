@@ -52,7 +52,8 @@ export const SimpleList = React.forwardRef((props, ref) => {
 
 
 
-    return <GestureHandlerRootView ref={ref}> 
+    return <View ref={ref}> 
+              <GestureHandlerRootView>
               <ScrollView style={styles.list} refreshControl={
                     <RefreshControl 
                         refreshing={refreshing}
@@ -71,6 +72,7 @@ export const SimpleList = React.forwardRef((props, ref) => {
                   </Pressable>
               )}
               </ScrollView>
-          </GestureHandlerRootView>
+              </GestureHandlerRootView>
+          </View>
   
 });

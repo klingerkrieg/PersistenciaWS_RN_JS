@@ -4,10 +4,13 @@ const express = require("express");
 const cors = require("cors");
 const fileUpload = require('express-fileupload');
 
-
+//CASO DÊ PROBLEMA DE CORS, ATUALIZE A PORTA
+//APERTE F12 PARA VER OS ERROS NO CONSOLE E 
+//VERIFIQUE QUAL É A URL 'ORIGIN'
+//SETE AQUI O VALOR CORRETO DA SUA URL 'ORIGIN'
 const app = express();
 var corsOptions = {
-  origin: "http://localhost:19006"
+  origin: "http://localhost:8081"
 };
 app.use(cors(corsOptions));
 // parse requests of content-type - application/json
